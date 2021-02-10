@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO.Ports;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace SNS.Library
@@ -9,23 +10,36 @@ namespace SNS.Library
     {
         public List<int> Bytes { get; set; } = new List<int>();
 
-        public Action<Package> Callback  { get; set; }
+        public Action<Package> Callback { get; set; }
 
-        public async Task Run(Action<Package> callback, TimeSpan frequency)
+        public bool Run(Action<Package> callback, TimeSpan frequency)
         {
-            Callback = callback;
-
-            var serial = new SerialPort("COM8", 2400, Parity.None, 8, StopBits.One);
-            Console.WriteLine($"Abrindo a porta");
-            serial.Open();
-            Console.WriteLine($"Porta aberta");
-            serial.DataReceived += Rx;
-
-            while (true)
+            try
             {
-                var bytes = new byte[] { 0x51, 0xFF, 0xFF, 0xFF, 0xFF, 0xB3, 0x0D };
-                serial.Write(bytes, 0, bytes.Length);
-                await Task.Delay(frequency);
+                Callback = callback;
+                var port = SerialPort.GetPortNames().FirstOrDefault();
+                if (string.IsNullOrWhiteSpace(port)) return false;
+                var serial = new SerialPort(port, 2400, Parity.None, 8, StopBits.One);
+                Console.WriteLine($"Abrindo a porta");
+                serial.Open();
+                Console.WriteLine($"Porta aberta");
+                serial.DataReceived += Rx;
+
+                _ = Task.Run(async () =>
+                {
+                    while (true)
+                    {
+                        var bytes = new byte[] { 0x51, 0xFF, 0xFF, 0xFF, 0xFF, 0xB3, 0x0D };
+                        serial.Write(bytes, 0, bytes.Length);
+                        await Task.Delay(frequency);
+                    }
+                });
+
+                return true;
+            }
+            catch(Exception ex)
+            {
+                return false;
             }
         }
 

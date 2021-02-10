@@ -10,10 +10,11 @@
         Name="MainWindow1"
         Topmost="True"
         Height="15" 
-        Width="320"
+        Width="365"
         AllowsTransparency="True"
         ShowInTaskbar="False" 
-        Background="Transparent"
+        Background="Transparent" 
+        MouseLeftButtonDown="GridOfWindow_MouseLeftButtonDown"
     >
 
     <Border CornerRadius="2" BorderThickness="0">
