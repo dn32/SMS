@@ -3,11 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30907.101
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SNS", "SNS\SNS.csproj", "{4B84F97A-27DF-4352-89FB-003F64C0528D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SNS.Viewer", "SNS.Viewer\SNS.Viewer.csproj", "{DD7B4A19-D551-446B-A79B-DE4020FC7E7F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SNS.Viewer", "SNS.Viewer\SNS.Viewer.csproj", "{DD7B4A19-D551-446B-A79B-DE4020FC7E7F}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SNS.Library", "SNS.Library\SNS.Library.csproj", "{D122F4EF-6CCF-48D9-9689-8B76BEF6FAE9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SNS.Library", "SNS.Library\SNS.Library.csproj", "{D122F4EF-6CCF-48D9-9689-8B76BEF6FAE9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,10 +13,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{4B84F97A-27DF-4352-89FB-003F64C0528D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{4B84F97A-27DF-4352-89FB-003F64C0528D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{4B84F97A-27DF-4352-89FB-003F64C0528D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{4B84F97A-27DF-4352-89FB-003F64C0528D}.Release|Any CPU.Build.0 = Release|Any CPU
 		{DD7B4A19-D551-446B-A79B-DE4020FC7E7F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{DD7B4A19-D551-446B-A79B-DE4020FC7E7F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DD7B4A19-D551-446B-A79B-DE4020FC7E7F}.Release|Any CPU.ActiveCfg = Release|Any CPU
