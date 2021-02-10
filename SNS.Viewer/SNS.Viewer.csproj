@@ -1,0 +1,14 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net5-windows</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <ApplicationIcon>icon.ico</ApplicationIcon>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\SNS.Library\SNS.Library.csproj" />
+  </ItemGroup>
+
+</Project>
