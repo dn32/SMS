@@ -8,11 +8,15 @@ namespace SNS.Viewer
 {
     public partial class MainWindow : Window
     {
-        private readonly TimeSpan GET_DATA_FREQUENCY = TimeSpan.FromSeconds(2);
+        private readonly TimeSpan GET_DATA_FREQUENCY = TimeSpan.FromSeconds(1);
 
         public Point AnchorPoint { get; set; }
 
         public bool InDrag { get; set; }
+
+        public NobreakInterface NobreakInterface { get; set; }
+
+        public Package Package { get; set; }
 
         public MainWindow()
         {
@@ -23,15 +27,71 @@ namespace SNS.Viewer
 
             MainWindow1.Left = screenWidth - MainWindow1.Width - 400;
             MainWindow1.Top = screenHeight - MainWindow1.Height - 40;
+            NobreakInterface = new NobreakInterface(Callback);
             _ = Init();
         }
 
         private async Task Init()
         {
-            while (new Startup().Run(Callback, GET_DATA_FREQUENCY) == false)
+            while (true) // Todo - Usar token de cancelamento
             {
+                await Connect();
+                await GetStatus();
+            }
+        }
+
+        private async Task Connect()
+        {
+            while (true)
+            {
+                try
+                {
+                    NobreakInterface.Connect();
+                    break;
+                }
+                catch (Exception ex)
+                {
+                    Write(ex.Message);
+                }
+
                 await Task.Delay(GET_DATA_FREQUENCY);
             }
+        }
+
+        private async Task GetStatus()
+        {
+            await Task.Run(async () =>
+            {
+                while (true)
+                {
+                    try
+                    {
+                        NobreakInterface.GetStatus();
+                        await Task.Delay(GET_DATA_FREQUENCY);
+                    }
+                    catch (Exception ex)
+                    {
+                        Write(ex.Message);
+                        break;
+                    }
+                }
+            });
+        }
+
+        private void Write(string text)
+        {
+            Dispatcher.Invoke(() =>
+            {
+                TxtValor.Text = text;
+            });
+        }
+
+        public Configs Configs { get; set; }
+
+        private void MainWindow1_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            Configs = new Configs(NobreakInterface, this);
+            Configs.Show();
         }
 
         private void GridOfWindow_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -67,13 +127,17 @@ namespace SNS.Viewer
             }
         }
 
-        private void Callback(Package p)
+        private void Callback(Package package)
         {
-            this.Dispatcher.Invoke(() =>
+            Package = package;
+            Write(package.ToString());
+            if (Configs != null)
             {
-                var txt = $"{DateTime.Now.ToString("HH:mm ss")} - In: {p.TensaoEntrada}V - Out: {p.TensaoSaida}V - Pwr: {p.PotenciaSaida}% - Temp: {p.Temperatura}º - Bat: {p.PorcentagemTensaoBateria}% ({(p.Status.ByPass ? "AC" : "Bateria")})";
-                TxtValor.Text = txt;
-            });
+                Dispatcher.Invoke(() =>
+                {
+                    Configs.AtualizarTela();
+                });
+            }
         }
     }
 }

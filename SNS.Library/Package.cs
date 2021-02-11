@@ -7,6 +7,17 @@ namespace SNS.Library
 {
     public class Package
     {
+        public int UltimaTensao { get; set; }
+        public int TensaoEntrada { get; set; }
+        public int TensaoSaida { get; set; }
+        public int PotenciaSaida { get; set; }
+        public int FrequenciaSaida { get; set; }
+        public int PorcentagemTensaoBateria { get; set; }
+        public int Temperatura { get; set; }
+        private int EstadoBateria { get; set; }
+        public Status Status { get; set; }
+        public DateTime Date { get; }
+
         public static Package Create(List<int> bytes)
         {
             var tipo = bytes.Next(1);
@@ -21,11 +32,12 @@ namespace SNS.Library
 
         public override string ToString()
         {
-            return $"In:{TensaoEntrada}V, Out: {TensaoSaida}V, Pwr: {PotenciaSaida}%, Temp: {Temperatura}º, Bat: {PorcentagemTensaoBateria}% ({(Status.ByPass ? "AC" : "Bateria")})";
+           return $"{Date:HH:mm ss} - In: {TensaoEntrada}V - Out: {TensaoSaida}V - Pwr: {PotenciaSaida}% - Temp: {Temperatura}º - Bat: {PorcentagemTensaoBateria}% ({(Status.ByPass ? "AC" : "Bateria")})";
         }
 
         private Package(List<int> bytes)
         {
+            Date = DateTime.Now;
             UltimaTensao = bytes.Next(2) / 10;
             TensaoEntrada = bytes.Next(2) / 10;
             TensaoSaida = bytes.Next(2) / 10;
@@ -47,18 +59,6 @@ namespace SNS.Library
                 BateriaBaixa = bits[6],
                 BateriaLigada = bits[7]
             };
-
-            //Console.WriteLine(@$"BeepLigado: {status.BeepLigado},ShutdownAtivo: {status.ShutdownAtivo},TesteAtivo: {status.TesteAtivo},UpsOk: {status.UpsOk},Boost: {status.Boost},ByPass: {status.ByPass},BateriaBaixa: {status.BateriaBaixa},BateriaLigada: {status.BateriaLigada}");
         }
-
-        public int UltimaTensao { get; set; }
-        public int TensaoEntrada { get; set; }
-        public int TensaoSaida { get; set; }
-        public int PotenciaSaida { get; set; }
-        public int FrequenciaSaida { get; set; }
-        public int PorcentagemTensaoBateria { get; set; }
-        public int Temperatura { get; set; }
-        private int EstadoBateria { get; set; }
-        public Status Status { get; set; }
     }
 }

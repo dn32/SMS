@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Tag root para definicao do protocolo.-->
+<!ELEMENT protocol (Command*)>
+<!ATTLIST protocol
+	name CDATA #REQUIRED
+	type CDATA #REQUIRED
+>
+<!ELEMENT Command (key, alias, description, products?, Request, Response?)>
+<!ELEMENT key (#PCDATA)>
+<!ELEMENT alias (#PCDATA)>
+<!ELEMENT description (#PCDATA)>
+<!ELEMENT products (product*)>
+<!ELEMENT product (#PCDATA)>
+<!ATTLIST product
+	vendor CDATA #REQUIRED
+	id CDATA #REQUIRED
+>
+<!ELEMENT Request (param*)>
+<!--Tag de definição da requisição. Contem o atributo beanType, que indica a classe bean referente ao retorno do comando (Resposta), e os parametros do comando a ser enviado para o dispositivo.-->
+<!ATTLIST Request
+	beanType CDATA #REQUIRED
+	searchFor CDATA #IMPLIED
+	start CDATA #IMPLIED
+	tipoNoBreak CDATA #IMPLIED
+>
+<!ELEMENT param (#PCDATA)>
+<!ATTLIST param
+	name CDATA #REQUIRED
+	type CDATA #REQUIRED
+	value CDATA #IMPLIED
+	calc CDATA #IMPLIED
+	size CDATA #IMPLIED
+	ignore CDATA #IMPLIED
+	start CDATA #IMPLIED
+	refs CDATA #IMPLIED
+>
+<!ELEMENT Response (param*)>
+<!ATTLIST Response
+	beanType CDATA #REQUIRED
+	validation CDATA #REQUIRED
+	start CDATA #IMPLIED
+	token CDATA #IMPLIED
+>

@@ -15,6 +15,7 @@
         ShowInTaskbar="False" 
         Background="Transparent" 
         MouseLeftButtonDown="GridOfWindow_MouseLeftButtonDown"
+        MouseDoubleClick="MainWindow1_MouseDoubleClick"
     >
 
     <Border CornerRadius="2" BorderThickness="0">
