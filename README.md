@@ -13,4 +13,4 @@ Visto que o monitor de nobreak "SMS Power View" é de dificil uso pelos motivos:
 
 ### Visto que a SMS usa um chip pirata da Profilif para conversão USB-Serial, 
 sempre que o windows atualiza o drive, ele para de funcionar (isso ocorre inclusive no software original também)
-por isso, tem explicação de como resolver, aplicativo que posta a não autenticidade do chip e drive pra instlar [aqui](Correção do BUG do cabo USB-Serial)
+por isso, tem explicação de como resolver, aplicativo que posta a não autenticidade do chip e drive pra instlar [aqui](/Correção do BUG do cabo USB-Serial)
