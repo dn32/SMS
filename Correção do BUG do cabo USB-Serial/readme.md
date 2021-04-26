@@ -1,3 +1,36 @@
+### Meu nobreask SMS não conecta mais pela USB!!!
+
+O que costumo fazer:
+
+* Instalo o drive PL2303_64bit_Installer.exe que está nesse mesmo diretório. Logo alí em cima vc baixa ele.
+* Conecto o cabo do nobreak e ligo ele
+
+![image](https://user-images.githubusercontent.com/12012626/116078689-4ee1d080-a66d-11eb-88f8-a39e22a64852.png)
+* No Gerenciador de dispositivo, navego em Portas COM e seleciono o Prolict USB-to-Serial que é o dispositivo do nobreak
+
+![image](https://user-images.githubusercontent.com/12012626/116079133-d596ad80-a66d-11eb-974c-424c1491a0a1.png)
+* Clique duplo nele e *Atualizar Driver*
+
+![image](https://user-images.githubusercontent.com/12012626/116078950-a1bb8800-a66d-11eb-8c51-ce6a42cd654a.png)
+* Procurar drivers no meu computador
+
+
+![image](https://user-images.githubusercontent.com/12012626/116079237-ef37f500-a66d-11eb-88ca-61ad06a7d366.png)
+* Permitir que eu escolha em uma lista
+
+![image](https://user-images.githubusercontent.com/12012626/116079294-01b22e80-a66e-11eb-872d-dca5eae85652.png)
+* Seleciono uma versão antiga
+* Clico em continuar e concluír
+* Instalo novamente o drive PL2303_64bit_Installer.exe (importante)
+* Reinicio o computador
+* Pronto, funciona mesmo depois da próxima atualização do windows
+
+
+
+
+
+## Abaixo segue as fontes e dados referentes ao problema e como resolver (em inglês).
+
 http://nilcemar.blogspot.com.br/2012/08/resolvido-usb-to-serial-prolific-no.html
 e
 http://www.ifamilysoftware.com/news37.html
