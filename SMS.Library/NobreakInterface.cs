@@ -26,13 +26,27 @@ namespace SMS.Library
             Callback = callback;
         }
 
-        public void Connect()
+        public (string port, int count) Connect(int tentativaDeConexao)
         {
-            var port = SerialPort.GetPortNames().FirstOrDefault();// Todo - testar as outras portas
+            var ports = SerialPort.GetPortNames().OrderBy(x => x).ToList();// Todo - testar as outras portas
+
+            if (SerialPort?.IsOpen == true)
+                SerialPort.Close();
+            
+            Bytes.Clear();
+
+            if (ports.Count <= tentativaDeConexao)
+                tentativaDeConexao = 0;
+
+            var port = ports[tentativaDeConexao];
+            
+          //  port = "COM10";
+
             if (string.IsNullOrWhiteSpace(port)) throw new InvalidOperationException("Nobreak não está conectado");
             SerialPort = new SerialPort(port, 2400, Parity.None, 8, StopBits.One);
             SerialPort.Open();
             SerialPort.DataReceived += Rx;
+            return (port, tentativaDeConexao);
         }
 
         public void GetStatus()

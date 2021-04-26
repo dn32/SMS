@@ -9,6 +9,8 @@ namespace SMS.Viewer
     public partial class MainWindow : Window
     {
         private readonly TimeSpan GET_DATA_FREQUENCY = TimeSpan.FromSeconds(1);
+     
+        public int TentativaDeConexao { get; set; }
 
         public Point AnchorPoint { get; set; }
 
@@ -25,7 +27,7 @@ namespace SMS.Viewer
             var screenWidth = SystemParameters.PrimaryScreenWidth;
             var screenHeight = SystemParameters.PrimaryScreenHeight;
 
-            MainWindow1.Left = screenWidth - MainWindow1.Width - 400;
+            MainWindow1.Left = screenWidth - MainWindow1.Width - 700;
             MainWindow1.Top = screenHeight - MainWindow1.Height - (screenHeight > screenWidth ? 82 : 40);
             NobreakInterface = new NobreakInterface(Callback);
             _ = Init();
@@ -46,13 +48,18 @@ namespace SMS.Viewer
             {
                 try
                 {
-                    NobreakInterface.Connect();
-                    Write("Conectado. Aguardando...");
-                    break;
+                    var (port, count) = NobreakInterface.Connect(TentativaDeConexao);
+                    TentativaDeConexao = count+1;
+
+                    Write($"Tentando contato com a {port}");
+
+                    await Task.Delay(TimeSpan.FromSeconds(10));
+                    if (Package != null) break;
                 }
                 catch (Exception ex)
                 {
                     Write(ex.Message);
+                    TentativaDeConexao++;
                 }
 
                 await Task.Delay(GET_DATA_FREQUENCY);
