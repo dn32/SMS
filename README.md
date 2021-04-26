@@ -9,7 +9,7 @@ Visto que o monitor de nobreak "SMS Power View" é de dificil uso pelos motivos:
 
 ### Criei este pequeno monitor que é compatível com nobreak SMS
 
-### Fique a vontade para enviar melhorias para este aplicativo
+#### Fique a vontade para enviar melhorias para este aplicativo
 
 ### Visto que a SMS usa um chip pirata da Profilif para conversão USB-Serial, 
 sempre que o windows atualiza o drive, ele para de funcionar (isso ocorre inclusive no software original também)
