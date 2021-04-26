@@ -40,8 +40,6 @@ namespace SMS.Library
 
             var port = ports[tentativaDeConexao];
             
-          //  port = "COM10";
-
             if (string.IsNullOrWhiteSpace(port)) throw new InvalidOperationException("Nobreak não está conectado");
             SerialPort = new SerialPort(port, 2400, Parity.None, 8, StopBits.One);
             SerialPort.Open();
