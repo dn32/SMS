@@ -26,7 +26,7 @@ namespace SNS.Viewer
             var screenHeight = SystemParameters.PrimaryScreenHeight;
 
             MainWindow1.Left = screenWidth - MainWindow1.Width - 400;
-            MainWindow1.Top = screenHeight - MainWindow1.Height - (screenHeight > screenWidth ? 82 : 60);
+            MainWindow1.Top = screenHeight - MainWindow1.Height - (screenHeight > screenWidth ? 82 : 40);
             NobreakInterface = new NobreakInterface(Callback);
             _ = Init();
         }

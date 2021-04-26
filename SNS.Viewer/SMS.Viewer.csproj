@@ -9,7 +9,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\SNS.Library\SNS.Library.csproj" />
+    <ProjectReference Include="..\SNS.Library\SMS.Library.csproj" />
   </ItemGroup>
 
 </Project>

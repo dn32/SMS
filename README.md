@@ -1,4 +1,4 @@
-# SNS
+# SMS
 
 Visto que o monitor de nobreak "SMS Power View" é de dificil uso pelos motivos:
   - Necessita de acesso administrativo no windows (o que não permite executar automaticamente no início do windows)
