@@ -1,7 +1,7 @@
-﻿<Application x:Class="SNS.Viewer.App"
+﻿<Application x:Class="SMS.Viewer.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:local="clr-namespace:SNS.Viewer"
+             xmlns:local="clr-namespace:SMS.Viewer"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
          

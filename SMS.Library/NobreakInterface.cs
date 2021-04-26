@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.IO.Ports;
 using System.Linq;
 
-namespace SNS.Library
+namespace SMS.Library
 {
     public class NobreakInterface
     {

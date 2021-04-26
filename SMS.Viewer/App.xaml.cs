@@ -1,6 +1,6 @@
 ﻿using System.Windows;
 
-namespace SNS.Viewer
+namespace SMS.Viewer
 {
     /// <summary>
     /// Interaction logic for App.xaml

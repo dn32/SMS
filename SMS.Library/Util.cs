@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace SNS.Library
+namespace SMS.Library
 {
     public static class Util
     {

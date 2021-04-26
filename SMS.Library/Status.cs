@@ -1,4 +1,4 @@
-﻿namespace SNS.Library
+﻿namespace SMS.Library
 {
     public class Status
     {

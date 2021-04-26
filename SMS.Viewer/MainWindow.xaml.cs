@@ -1,10 +1,10 @@
-﻿using SNS.Library;
+﻿using SMS.Library;
 using System;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
 
-namespace SNS.Viewer
+namespace SMS.Viewer
 {
     public partial class MainWindow : Window
     {

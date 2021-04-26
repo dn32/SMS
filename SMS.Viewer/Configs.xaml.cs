@@ -1,7 +1,7 @@
-﻿using SNS.Library;
+﻿using SMS.Library;
 using System.Windows;
 
-namespace SNS.Viewer
+namespace SMS.Viewer
 {
     public partial class Configs : Window
     {

@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30907.101
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SMS.Viewer", "SNS.Viewer\SMS.Viewer.csproj", "{DD7B4A19-D551-446B-A79B-DE4020FC7E7F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SMS.Viewer", "SMS.Viewer\SMS.Viewer.csproj", "{DD7B4A19-D551-446B-A79B-DE4020FC7E7F}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SMS.Library", "SNS.Library\SMS.Library.csproj", "{D122F4EF-6CCF-48D9-9689-8B76BEF6FAE9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SMS.Library", "SMS.Library\SMS.Library.csproj", "{D122F4EF-6CCF-48D9-9689-8B76BEF6FAE9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
