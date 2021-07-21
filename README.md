@@ -12,7 +12,7 @@ Visto que o monitor de nobreak "SMS Power View" é de dificil uso pelos motivos:
 
 
 ### Meu nobreask SMS não conecta mais pela USB!!!
-Visto que há um problema com versões novas do drive da Profilif para conversão USB-Serial, 
+Visto que há um problema com versões novas do drive da Profilifc para conversão USB-Serial, 
 sempre que o windows atualiza o drive, ele para de funcionar (isso ocorre inclusive no software original também)
 por isso, tem explicação de como resolver, aplicativo que mostra a não autenticidade do chip e drive pra instalar [aqui](https://github.com/dn32/SMS/tree/main/Corre%C3%A7%C3%A3o%20do%20BUG%20do%20cabo%20USB-Serial) (Inglês)
 

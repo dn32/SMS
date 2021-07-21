@@ -32,18 +32,19 @@ namespace SMS.Library
 
             if (SerialPort?.IsOpen == true)
                 SerialPort.Close();
-            
+
             Bytes.Clear();
 
             if (ports.Count <= tentativaDeConexao)
                 tentativaDeConexao = 0;
 
             var port = ports[tentativaDeConexao];
-            
+
             if (string.IsNullOrWhiteSpace(port)) throw new InvalidOperationException("Nobreak não está conectado");
             SerialPort = new SerialPort(port, 2400, Parity.None, 8, StopBits.One);
-            SerialPort.Open();
             SerialPort.DataReceived += Rx;
+            SerialPort.Open();
+            GetStatus();
             return (port, tentativaDeConexao);
         }
 
@@ -101,7 +102,7 @@ namespace SMS.Library
                 Bytes.Add(byte_);
             }
 
-            if (Bytes.Count >= 19)
+            if (Bytes.Count >= 18)
             {
                 var p = Package.Create(Bytes);
                 if (p != null)

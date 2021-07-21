@@ -28,7 +28,7 @@ namespace SMS.Viewer
             var screenHeight = SystemParameters.PrimaryScreenHeight;
 
             MainWindow1.Left = screenWidth - MainWindow1.Width - 700;
-            MainWindow1.Top = screenHeight - MainWindow1.Height - (screenHeight > screenWidth ? 82 : 40);
+            MainWindow1.Top = screenHeight - MainWindow1.Height - (screenHeight > screenWidth ? 82 : 48);
             NobreakInterface = new NobreakInterface(Callback);
             _ = Init();
         }
@@ -51,7 +51,7 @@ namespace SMS.Viewer
                     var (port, count) = NobreakInterface.Connect(TentativaDeConexao);
                     TentativaDeConexao = count+1;
 
-                    Write($"Tentando contato com a {port}");
+                    Write($"Tentando contato com a {port}. ({TentativaDeConexao})");
 
                     await Task.Delay(TimeSpan.FromSeconds(10));
                     if (Package != null) break;
