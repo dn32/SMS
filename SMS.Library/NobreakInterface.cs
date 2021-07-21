@@ -11,7 +11,7 @@ namespace SMS.Library
 
         private Action<Package> Callback { get; set; }
 
-        private SerialPort SerialPort { get; set; }
+        public SerialPort SerialPort { get; set; }
 
         private byte[] GetStatusData { get; } = new byte[] { 0x51, 0xFF, 0xFF, 0xFF, 0xFF, 0xB3, 0x0D };
 
@@ -42,8 +42,8 @@ namespace SMS.Library
 
             if (string.IsNullOrWhiteSpace(port)) throw new InvalidOperationException("Nobreak não está conectado");
             SerialPort = new SerialPort(port, 2400, Parity.None, 8, StopBits.One);
-            SerialPort.DataReceived += Rx;
             SerialPort.Open();
+            SerialPort.DataReceived += Rx;
             GetStatus();
             return (port, tentativaDeConexao);
         }
@@ -92,6 +92,8 @@ namespace SMS.Library
                 SerialPort.Write(bytes, 0, bytes.Length);
         }
 
+        public bool Iniciado { get; set; }
+
         private void Rx(object sender, SerialDataReceivedEventArgs e)
         {
             var port = sender as SerialPort;
@@ -99,17 +101,22 @@ namespace SMS.Library
             for (int i = 0; i < count; i++)
             {
                 var byte_ = port.ReadByte();
-                Bytes.Add(byte_);
+                if (Iniciado)
+                {
+                    Bytes.Add(byte_);
+                }
+                else if (new int[] { 60, 61, 62 }.Contains(byte_))
+                {
+                    Iniciado = true;
+                    Bytes.Add(byte_);
+                }
             }
 
-            if (Bytes.Count >= 18)
+            if (Bytes.Count >= 19)
             {
                 var p = Package.Create(Bytes);
-                if (p != null)
-                {
-                    Callback(p);
-                }
-                //Console.WriteLine(p);
+                if (p != null) Callback(p);
+                Iniciado = false;
             }
         }
     }

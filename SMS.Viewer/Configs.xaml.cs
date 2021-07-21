@@ -52,5 +52,11 @@ namespace SMS.Viewer
                 MainWindow.Package.Status.TesteAtivo = false;
             AtualizarTela();
         }
+
+        private void btnFechar_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow.Close();
+            this.Close();
+        }
     }
 }

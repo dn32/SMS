@@ -10,7 +10,7 @@
         Name="MainWindow1"
         Topmost="True"
         Height="15" 
-        Width="365"
+        Width="430"
         AllowsTransparency="True"
         ShowInTaskbar="False" 
         Background="Transparent" 
@@ -24,7 +24,7 @@
         </Grid>
 
         <Border.Background>
-            <SolidColorBrush Opacity="0.3" Color="White"/>
+            <SolidColorBrush Opacity="0.8" Color="White"/>
         </Border.Background>
     </Border>
 </Window>

@@ -9,7 +9,7 @@ namespace SMS.Viewer
     public partial class MainWindow : Window
     {
         private readonly TimeSpan GET_DATA_FREQUENCY = TimeSpan.FromSeconds(1);
-     
+
         public int TentativaDeConexao { get; set; }
 
         public Point AnchorPoint { get; set; }
@@ -30,28 +30,31 @@ namespace SMS.Viewer
             MainWindow1.Left = screenWidth - MainWindow1.Width - 700;
             MainWindow1.Top = screenHeight - MainWindow1.Height - (screenHeight > screenWidth ? 82 : 48);
             NobreakInterface = new NobreakInterface(Callback);
-            _ = Init();
+            Connect();
         }
 
-        private async Task Init()
+        private void Connect()
         {
-            while (true) // Todo - Usar token de cancelamento
-            {
-                await Connect();
-                await GetStatus();
-            }
+            _ = ManterConexaoAsync();
+            _ = ObterStatusAsync();
         }
 
-        private async Task Connect()
+        private async Task ManterConexaoAsync()
         {
             while (true)
             {
                 try
                 {
-                    var (port, count) = NobreakInterface.Connect(TentativaDeConexao);
-                    TentativaDeConexao = count+1;
+                    if (NobreakInterface.SerialPort?.IsOpen == true)
+                    {
+                        await Task.Delay(GET_DATA_FREQUENCY);
+                        continue;
+                    }
 
-                    Write($"Tentando contato com a {port}. ({TentativaDeConexao})");
+                    var (port, count) = NobreakInterface.Connect(TentativaDeConexao);
+                    TentativaDeConexao = count + 1;
+
+                    Write($"Tentando contato com a {port}");
 
                     await Task.Delay(TimeSpan.FromSeconds(10));
                     if (Package != null) break;
@@ -63,6 +66,26 @@ namespace SMS.Viewer
                 }
 
                 await Task.Delay(GET_DATA_FREQUENCY);
+            }
+        }
+
+        private async Task ObterStatusAsync()
+        {
+            while (true)
+            {
+                try
+                {
+                    if (NobreakInterface.SerialPort?.IsOpen == true)
+                    {
+                        await GetStatus();
+                    }
+
+                    await Task.Delay(TimeSpan.FromSeconds(10));
+                }
+                catch (Exception)
+                {
+
+                }
             }
         }
 

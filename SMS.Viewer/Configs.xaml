@@ -16,5 +16,6 @@
         <Button Name="BtnBeepOnOf" Content="Ativar ou desativar o beep" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="27" Width="160" Click="BtnBeepOnOf_Click"/>
         <Button x:Name="BtnTestarBaterias" Content="Testar baterias" HorizontalAlignment="Left" Margin="10,42,0,0" VerticalAlignment="Top" Height="27" Width="160" Click="BtnTestarBaterias_Click"/>
         <Button x:Name="BtnParaTesteDebaterias" Content="Para testar baterias" HorizontalAlignment="Left" Margin="175,42,0,0" VerticalAlignment="Top" Height="27" Width="160" Click="BtnParaTesteDebaterias_Click"/>
+        <Button x:Name="btnFechar" Content="Fechar a aplicação" HorizontalAlignment="Left" Margin="10,0,0,10" Width="160" Click="btnFechar_Click" Height="27" VerticalAlignment="Bottom"/>
     </Grid>
 </Window>

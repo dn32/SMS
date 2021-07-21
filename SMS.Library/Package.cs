@@ -32,7 +32,7 @@ namespace SMS.Library
 
         public override string ToString()
         {
-           return $"{Date:HH:mm ss} - In: {TensaoEntrada}V - Out: {TensaoSaida}V - Pwr: {PotenciaSaida}% - Temp: {Temperatura}º - Bat: {PorcentagemTensaoBateria}% ({(Status.ByPass ? "AC" : "Bateria")})";
+           return $"{Date:HH:mm ss} - In: {TensaoEntrada}V - Out: {TensaoSaida}V - Pwr: {PotenciaSaida}% ({PotenciaSaida * 975 / 100} watts) - Temp: {Temperatura}º - Bat: {PorcentagemTensaoBateria}% ({(Status.ByPass ? "AC" : "Bateria")})";
         }
 
         private Package(List<int> bytes)
