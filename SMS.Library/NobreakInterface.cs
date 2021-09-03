@@ -28,7 +28,7 @@ namespace SMS.Library
 
         public (string port, int count) Connect(int tentativaDeConexao)
         {
-            var ports = SerialPort.GetPortNames().OrderBy(x => x).ToList();// Todo - testar as outras portas
+            var ports = SerialPort.GetPortNames().Where(x => x.Equals("COM6")).OrderByDescending(x => x).ToList();// Todo - testar as outras portas
 
             if (SerialPort?.IsOpen == true)
                 SerialPort.Close();
